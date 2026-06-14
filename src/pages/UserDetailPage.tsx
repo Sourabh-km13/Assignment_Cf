@@ -60,11 +60,35 @@ export default function UserDetails() {
 
                 {/* User Information */}
                 <section className="mt-6 rounded-3xl bg-slate-800/40 p-8 shadow-sm ">
-                    <h2 className="mb-6 text-xl font-semibold">
-                        User Information
-                    </h2>
+                    <div className="flex flex-wrap items-center justify-between gap-4">
+                        <div>
+                            <h2 className="mb-6 text-xl font-semibold">
+                                User Information
+                            </h2>
+                        </div>
 
-                    <div className="grid gap-4 md:grid-cols-2">
+                        <div className="flex gap-3">
+                            <button
+                                onClick={() => navigate(`/users/${user.id}/edit`)}
+                                className="rounded-lg bg-sky-500 px-4 py-2 text-white transition hover:bg-sky-400"
+                            >
+                                Update User
+                            </button>
+                            <button
+                                onClick={() => {
+                                    if (window.confirm("Delete this user?")) {
+                                        data?.deleteUser(user.id);
+                                        navigate("/users");
+                                    }
+                                }}
+                                className="rounded-lg bg-rose-500 px-4 py-2 text-white transition hover:bg-rose-400"
+                            >
+                                Delete User
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="grid gap-4 md:grid-cols-2 mt-6">
 
                         <InfoCard
                             icon={<Mail size={18} />}

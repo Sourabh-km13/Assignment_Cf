@@ -1,11 +1,5 @@
 import { Mail, Phone } from "lucide-react";
-
-export interface User {
-    id: number;
-    name: string;
-    email: string;
-    phone: string;
-}
+import type { User } from "../types/userType";
 
 interface UserCardProps {
     user: User;
