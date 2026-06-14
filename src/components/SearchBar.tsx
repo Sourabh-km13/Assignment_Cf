@@ -1,4 +1,5 @@
 import { Search, X } from "lucide-react";
+import Field from "./ui/Field";
 
 interface UserSearchProps {
     value: string;
@@ -16,11 +17,12 @@ export default function UserSearch({
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
             />
 
-            <input
+            <Field
+                noBase
                 type="text"
                 value={value}
                 placeholder="Search by name or email..."
-                onChange={(e) => onChange(e.target.value)}
+                onChange={(e) => onChange((e.target as HTMLInputElement).value)}
                 className="
                     w-full
                     rounded-2xl

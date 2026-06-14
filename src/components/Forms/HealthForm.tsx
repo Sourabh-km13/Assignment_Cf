@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useUsers } from "../../hooks/useUsers";
 import type { HealthAssessmentFormData } from "../../types/formType";
 import { UserSelect } from "../SelectUserForm";
+import Field from "../ui/Field";
 
 export const HealthAssessmentForm = () => {
     const { addSubmission } = useUsers();
@@ -59,60 +60,32 @@ export const HealthAssessmentForm = () => {
             )}
 
             <div className="grid md:grid-cols-2 gap-4">
-                <input
-                    {...register("residentName", { required: "Resident name is required." })}
-                    placeholder="Resident Name"
-                    className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-                />
+                <Field {...register("residentName", { required: "Resident name is required." })} placeholder="Resident Name" />
                 {errors.residentName && (
                     <p className="text-sm text-rose-400">{errors.residentName.message}</p>
                 )}
 
-                <input
-                    {...register("caregiverName", { required: "Caregiver name is required." })}
-                    placeholder="Caregiver Name"
-                    className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-                />
+                <Field {...register("caregiverName", { required: "Caregiver name is required." })} placeholder="Caregiver Name" />
                 {errors.caregiverName && (
                     <p className="text-sm text-rose-400">{errors.caregiverName.message}</p>
                 )}
 
-                <input
-                    type="number"
-                    {...register("age", {
-                        required: "Age is required.",
-                        valueAsNumber: true,
-                    })}
-                    placeholder="Age"
-                    className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-                />
+                <Field type="number" {...register("age", { required: "Age is required.", valueAsNumber: true })} placeholder="Age" />
                 {errors.age && (
                     <p className="text-sm text-rose-400">{errors.age.message}</p>
                 )}
 
-                <input
-                    {...register("gender", { required: "Gender is required." })}
-                    placeholder="Gender"
-                    className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-                />
+                <Field {...register("gender", { required: "Gender is required." })} placeholder="Gender" />
                 {errors.gender && (
                     <p className="text-sm text-rose-400">{errors.gender.message}</p>
                 )}
 
-                <input
-                    {...register("roomNo", { required: "Room number is required." })}
-                    placeholder="Room Number"
-                    className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-                />
+                <Field {...register("roomNo", { required: "Room number is required." })} placeholder="Room Number" />
                 {errors.roomNo && (
                     <p className="text-sm text-rose-400">{errors.roomNo.message}</p>
                 )}
 
-                <input
-                    type="date"
-                    {...register("date", { required: "Date is required." })}
-                    className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-                />
+                <Field as="input" type="date" {...register("date", { required: "Date is required." })} />
                 {errors.date && (
                     <p className="text-sm text-rose-400">{errors.date.message}</p>
                 )}
@@ -124,47 +97,27 @@ export const HealthAssessmentForm = () => {
                 </h2>
 
                 <div className="grid md:grid-cols-2 gap-4">
-                    <input
-                        {...register("temperature", { required: "Temperature is required." })}
-                        placeholder="Temperature"
-                        className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-                    />
+                    <Field {...register("temperature", { required: "Temperature is required." })} placeholder="Temperature" />
                     {errors.temperature && (
                         <p className="text-sm text-rose-400">{errors.temperature.message}</p>
                     )}
 
-                    <input
-                        {...register("bloodPressure", { required: "Blood pressure is required." })}
-                        placeholder="Blood Pressure"
-                        className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-                    />
+                    <Field {...register("bloodPressure", { required: "Blood pressure is required." })} placeholder="Blood Pressure" />
                     {errors.bloodPressure && (
                         <p className="text-sm text-rose-400">{errors.bloodPressure.message}</p>
                     )}
 
-                    <input
-                        {...register("heartRate", { required: "Heart rate is required." })}
-                        placeholder="Heart Rate"
-                        className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-                    />
+                    <Field {...register("heartRate", { required: "Heart rate is required." })} placeholder="Heart Rate" />
                     {errors.heartRate && (
                         <p className="text-sm text-rose-400">{errors.heartRate.message}</p>
                     )}
 
-                    <input
-                        {...register("oxygenLevel", { required: "Oxygen level is required." })}
-                        placeholder="Oxygen Level"
-                        className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-                    />
+                    <Field {...register("oxygenLevel", { required: "Oxygen level is required." })} placeholder="Oxygen Level" />
                     {errors.oxygenLevel && (
                         <p className="text-sm text-rose-400">{errors.oxygenLevel.message}</p>
                     )}
 
-                    <input
-                        {...register("respiratoryRate", { required: "Respiratory rate is required." })}
-                        placeholder="Respiratory Rate"
-                        className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-                    />
+                    <Field {...register("respiratoryRate", { required: "Respiratory rate is required." })} placeholder="Respiratory Rate" />
                     {errors.respiratoryRate && (
                         <p className="text-sm text-rose-400">{errors.respiratoryRate.message}</p>
                     )}
@@ -201,21 +154,12 @@ export const HealthAssessmentForm = () => {
                 </div>
             </div>
 
-            <textarea
-                {...register("caregiverNotes", { required: "Caregiver notes are required." })}
-                placeholder="Caregiver Notes"
-                rows={5}
-                className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-            />
+            <Field as="textarea" {...register("caregiverNotes", { required: "Caregiver notes are required." })} placeholder="Caregiver Notes" rows={5} />
             {errors.caregiverNotes && (
                 <p className="text-sm text-rose-400">{errors.caregiverNotes.message}</p>
             )}
 
-            <input
-                {...register("signature", { required: "Caregiver signature is required." })}
-                placeholder="Caregiver Signature"
-                className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-            />
+            <Field {...register("signature", { required: "Caregiver signature is required." })} placeholder="Caregiver Signature" />
             {errors.signature && (
                 <p className="text-sm text-rose-400">{errors.signature.message}</p>
             )}

@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useForm } from "react-hook-form";
 import type { UserFormValues } from "../types/userType";
+import Field from "./ui/Field";
 
 interface UserFormProps {
   defaultValues?: UserFormValues;
@@ -27,21 +28,13 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <label className="block text-sm font-medium text-slate-200 mb-2">Name</label>
-          <input
-            {...register("name", { required: "Name is required." })}
-            placeholder="Full Name"
-            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-          />
+          <Field {...register("name", { required: "Name is required." })} placeholder="Full Name" />
           {errors.name && <p className="text-sm text-rose-400">{errors.name.message}</p>}
         </div>
 
         <div>
           <label className="block text-sm font-medium text-slate-200 mb-2">Username</label>
-          <input
-            {...register("username", { required: "Username is required." })}
-            placeholder="Username"
-            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-          />
+          <Field {...register("username", { required: "Username is required." })} placeholder="Username" />
           {errors.username && <p className="text-sm text-rose-400">{errors.username.message}</p>}
         </div>
       </div>
@@ -49,7 +42,7 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <label className="block text-sm font-medium text-slate-200 mb-2">Email</label>
-          <input
+          <Field
             {...register("email", {
               required: "Email is required.",
               pattern: {
@@ -58,18 +51,13 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
               },
             })}
             placeholder="Email"
-            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
           />
           {errors.email && <p className="text-sm text-rose-400">{errors.email.message}</p>}
         </div>
 
         <div>
           <label className="block text-sm font-medium text-slate-200 mb-2">Phone</label>
-          <input
-            {...register("phone", { required: "Phone is required." })}
-            placeholder="Phone"
-            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-          />
+          <Field {...register("phone", { required: "Phone is required." })} placeholder="Phone" />
           {errors.phone && <p className="text-sm text-rose-400">{errors.phone.message}</p>}
         </div>
       </div>
@@ -77,21 +65,13 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <label className="block text-sm font-medium text-slate-200 mb-2">Website</label>
-          <input
-            {...register("website", { required: "Website is required." })}
-            placeholder="Website"
-            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-          />
+          <Field {...register("website", { required: "Website is required." })} placeholder="Website" />
           {errors.website && <p className="text-sm text-rose-400">{errors.website.message}</p>}
         </div>
 
         <div>
           <label className="block text-sm font-medium text-slate-200 mb-2">Company</label>
-          <input
-            {...register("companyName", { required: "Company name is required." })}
-            placeholder="Company Name"
-            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-          />
+          <Field {...register("companyName", { required: "Company name is required." })} placeholder="Company Name" />
           {errors.companyName && <p className="text-sm text-rose-400">{errors.companyName.message}</p>}
         </div>
       </div>
@@ -99,52 +79,32 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <label className="block text-sm font-medium text-slate-200 mb-2">Street</label>
-          <input
-            {...register("street", { required: "Street is required." })}
-            placeholder="Street"
-            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-          />
+          <Field {...register("street", { required: "Street is required." })} placeholder="Street" />
           {errors.street && <p className="text-sm text-rose-400">{errors.street.message}</p>}
         </div>
 
         <div>
           <label className="block text-sm font-medium text-slate-200 mb-2">Suite</label>
-          <input
-            {...register("suite")}
-            placeholder="Suite"
-            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-          />
+          <Field {...register("suite")} placeholder="Suite" />
         </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
         <div>
           <label className="block text-sm font-medium text-slate-200 mb-2">City</label>
-          <input
-            {...register("city", { required: "City is required." })}
-            placeholder="City"
-            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-          />
+          <Field {...register("city", { required: "City is required." })} placeholder="City" />
           {errors.city && <p className="text-sm text-rose-400">{errors.city.message}</p>}
         </div>
 
         <div>
           <label className="block text-sm font-medium text-slate-200 mb-2">Zipcode</label>
-          <input
-            {...register("zipcode", { required: "Zipcode is required." })}
-            placeholder="Zipcode"
-            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-          />
+          <Field {...register("zipcode", { required: "Zipcode is required." })} placeholder="Zipcode" />
           {errors.zipcode && <p className="text-sm text-rose-400">{errors.zipcode.message}</p>}
         </div>
 
         <div className="col-span-1 md:col-span-1">
           <label className="block text-sm font-medium text-slate-200 mb-2">Geo Lat</label>
-          <input
-            {...register("lat")}
-            placeholder="Lat"
-            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
-          />
+          <Field {...register("lat")} placeholder="Lat" />
         </div>
       </div>
 
