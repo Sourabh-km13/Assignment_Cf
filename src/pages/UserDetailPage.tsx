@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router";
-import { ArrowLeft, Mail, Phone, Building2, MapPin, Globe } from "lucide-react";
+import {  Mail, Phone, Building2, MapPin, Globe } from "lucide-react";
 import toast from "react-hot-toast";
 import UserContext from "../context/UserContext";
 import { InfoCard } from "../components/InfoCard";
 import UserSubmittedForms from "../components/UserSubmittedForms";
+import Button from './../components/Button';
 
 export default function UserDetails() {
     const { id } = useParams();
@@ -35,13 +36,14 @@ export default function UserDetails() {
             <div className="mx-auto max-w-5xl">
 
                 {/* Back Button */}
-                <button
+                <Button
                     onClick={() => navigate(-1)}
-                    className="mb-6 flex items-center gap-2 rounded-lg border px-4 py-2 hover:bg-slate-100"
-                >
-                    <ArrowLeft size={18} />
-                    Back
-                </button>
+                    
+                    className="mb-6 flex"
+                >   
+
+                    <p>Back</p>
+                </Button>
 
                 {/* Profile Card */}
                 <section className="rounded-3xl p-8 shadow-sm">
@@ -69,13 +71,13 @@ export default function UserDetails() {
                         </div>
 
                         <div className="flex gap-3">
-                            <button
+                            <Button
                                 onClick={() => navigate(`/users/${user.id}/edit`)}
                                 className="rounded-lg bg-sky-500 px-4 py-2 text-white transition hover:bg-sky-400"
                             >
                                 Update User
-                            </button>
-                            <button
+                            </Button>
+                            <Button     
                                 onClick={() => {
                                     if (window.confirm("Delete this user?")) {
                                         data?.deleteUser(user.id);
@@ -83,10 +85,11 @@ export default function UserDetails() {
                                         navigate("/users");
                                     }
                                 }}
-                                className="rounded-lg bg-rose-500 px-4 py-2 text-white transition hover:bg-rose-400"
+                                gradient="bg-gradient-to-r from-red-500 to-rose-500"
+                                
                             >
                                 Delete User
-                            </button>
+                            </Button>
                         </div>
                     </div>
 
