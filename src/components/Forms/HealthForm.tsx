@@ -12,7 +12,23 @@ export const HealthAssessmentForm = () => {
         register,
         handleSubmit,
         reset,
-    } = useForm<HealthAssessmentFormData>();
+        formState: { errors },
+    } = useForm<HealthAssessmentFormData>({
+        defaultValues: {
+            activities: {
+                walk: { morning: false, afternoon: false, evening: false },
+                exercise: { morning: false, afternoon: false, evening: false },
+                therapy: { morning: false, afternoon: false, evening: false },
+                socialInteraction: { morning: false, afternoon: false, evening: false },
+            },
+            meals: {
+                breakfast: false,
+                lunch: false,
+                dinner: false,
+                snacks: false,
+            },
+        },
+    });
 
     const onSubmit = (
         data: HealthAssessmentFormData
@@ -39,43 +55,68 @@ export const HealthAssessmentForm = () => {
                 </div>
             )}
             <UserSelect register={register} />
+            {errors.userId && (
+                <p className="text-sm text-rose-400">Please select a user.</p>
+            )}
 
             <div className="grid md:grid-cols-2 gap-4">
                 <input
-                    {...register("residentName")}
+                    {...register("residentName", { required: "Resident name is required." })}
                     placeholder="Resident Name"
                     className="input"
                 />
+                {errors.residentName && (
+                    <p className="text-sm text-rose-400">{errors.residentName.message}</p>
+                )}
 
                 <input
-                    {...register("caregiverName")}
+                    {...register("caregiverName", { required: "Caregiver name is required." })}
                     placeholder="Caregiver Name"
                     className="input"
                 />
+                {errors.caregiverName && (
+                    <p className="text-sm text-rose-400">{errors.caregiverName.message}</p>
+                )}
 
                 <input
-                    {...register("age")}
+                    type="number"
+                    {...register("age", {
+                        required: "Age is required.",
+                        valueAsNumber: true,
+                    })}
                     placeholder="Age"
                     className="input"
                 />
+                {errors.age && (
+                    <p className="text-sm text-rose-400">{errors.age.message}</p>
+                )}
 
                 <input
-                    {...register("gender")}
+                    {...register("gender", { required: "Gender is required." })}
                     placeholder="Gender"
                     className="input"
                 />
+                {errors.gender && (
+                    <p className="text-sm text-rose-400">{errors.gender.message}</p>
+                )}
 
                 <input
-                    {...register("roomNo")}
+                    {...register("roomNo", { required: "Room number is required." })}
                     placeholder="Room Number"
                     className="input"
                 />
+                {errors.roomNo && (
+                    <p className="text-sm text-rose-400">{errors.roomNo.message}</p>
+                )}
 
                 <input
                     type="date"
-                    {...register("date")}
+                    {...register("date", { required: "Date is required." })}
                     className="input"
                 />
+                {errors.date && (
+                    <p className="text-sm text-rose-400">{errors.date.message}</p>
+                )}
             </div>
 
             <div className="rounded-xl border border-slate-700 p-4">
@@ -85,34 +126,49 @@ export const HealthAssessmentForm = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                     <input
-                        {...register("temperature")}
+                        {...register("temperature", { required: "Temperature is required." })}
                         placeholder="Temperature"
                         className="input"
                     />
+                    {errors.temperature && (
+                        <p className="text-sm text-rose-400">{errors.temperature.message}</p>
+                    )}
 
                     <input
-                        {...register("bloodPressure")}
+                        {...register("bloodPressure", { required: "Blood pressure is required." })}
                         placeholder="Blood Pressure"
                         className="input"
                     />
+                    {errors.bloodPressure && (
+                        <p className="text-sm text-rose-400">{errors.bloodPressure.message}</p>
+                    )}
 
                     <input
-                        {...register("heartRate")}
+                        {...register("heartRate", { required: "Heart rate is required." })}
                         placeholder="Heart Rate"
                         className="input"
                     />
+                    {errors.heartRate && (
+                        <p className="text-sm text-rose-400">{errors.heartRate.message}</p>
+                    )}
 
                     <input
-                        {...register("oxygenLevel")}
+                        {...register("oxygenLevel", { required: "Oxygen level is required." })}
                         placeholder="Oxygen Level"
                         className="input"
                     />
+                    {errors.oxygenLevel && (
+                        <p className="text-sm text-rose-400">{errors.oxygenLevel.message}</p>
+                    )}
 
                     <input
-                        {...register("respiratoryRate")}
+                        {...register("respiratoryRate", { required: "Respiratory rate is required." })}
                         placeholder="Respiratory Rate"
                         className="input"
                     />
+                    {errors.respiratoryRate && (
+                        <p className="text-sm text-rose-400">{errors.respiratoryRate.message}</p>
+                    )}
                 </div>
             </div>
 
@@ -147,17 +203,23 @@ export const HealthAssessmentForm = () => {
             </div>
 
             <textarea
-                {...register("caregiverNotes")}
+                {...register("caregiverNotes", { required: "Caregiver notes are required." })}
                 placeholder="Caregiver Notes"
                 rows={5}
                 className="input"
             />
+            {errors.caregiverNotes && (
+                <p className="text-sm text-rose-400">{errors.caregiverNotes.message}</p>
+            )}
 
             <input
-                {...register("signature")}
+                {...register("signature", { required: "Caregiver signature is required." })}
                 placeholder="Caregiver Signature"
                 className="input"
             />
+            {errors.signature && (
+                <p className="text-sm text-rose-400">{errors.signature.message}</p>
+            )}
 
             <button
                 type="submit"
