@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useNavigate, useParams } from "react-router";
 import { ArrowLeft, Mail, Phone, Building2, MapPin, Globe } from "lucide-react";
+import toast from "react-hot-toast";
 import UserContext from "../context/UserContext";
 import { InfoCard } from "../components/InfoCard";
 import UserSubmittedForms from "../components/UserSubmittedForms";
@@ -78,6 +79,7 @@ export default function UserDetails() {
                                 onClick={() => {
                                     if (window.confirm("Delete this user?")) {
                                         data?.deleteUser(user.id);
+                                        toast.success("User deleted successfully.");
                                         navigate("/users");
                                     }
                                 }}

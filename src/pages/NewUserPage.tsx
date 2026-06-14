@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import { useUsers } from "../hooks/useUsers";
+import toast from "react-hot-toast";
 import UserForm from "../components/UserForm";
 import type { UserFormValues } from "../types/userType";
 
@@ -9,6 +10,7 @@ export default function NewUserPage() {
 
   const handleSubmit = (values: UserFormValues) => {
     createUser(values);
+    toast.success("New user created successfully.");
     navigate("/users");
   };
 

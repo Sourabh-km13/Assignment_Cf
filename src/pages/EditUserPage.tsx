@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useNavigate, useParams } from "react-router";
+import toast from "react-hot-toast";
 import { useUsers } from "../hooks/useUsers";
 import UserForm from "../components/UserForm";
 import type { UserFormValues } from "../types/userType";
@@ -41,6 +42,7 @@ export default function EditUserPage() {
 
   const handleSubmit = (values: UserFormValues) => {
     updateUser(userId, values);
+    toast.success("User updated successfully.");
     navigate(`/users/${userId}`);
   };
 

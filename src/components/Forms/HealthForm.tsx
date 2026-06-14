@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useUsers } from "../../hooks/useUsers";
 import type { HealthAssessmentFormData } from "../../types/formType";
 import { UserSelect } from "../SelectUserForm";
@@ -42,11 +43,16 @@ export const HealthAssessmentForm = () => {
         });
         reset();
         setSubmitted(true);
+        toast.success("Health assessment submitted successfully.");
+    };
+
+    const onError = () => {
+        toast.error("Please fix the errors before submitting the health assessment.");
     };
 
     return (
         <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit, onError)}
             className="space-y-6"
         >
             {submitted && (

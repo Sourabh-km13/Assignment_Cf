@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useUsers } from "../../hooks/useUsers";
 import type { IncidentReportFormData } from "../../types/formType";
 import { UserSelect } from "../SelectUserForm";
@@ -27,11 +28,16 @@ export const IncidentReportForm = () => {
     });
     reset();
     setSubmitted(true);
+    toast.success("Incident report submitted successfully.");
+  };
+
+  const onError = () => {
+    toast.error("Please fix the errors before submitting the incident report.");
   };
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit, onError)}
       className="space-y-6"
     >
       {submitted && (

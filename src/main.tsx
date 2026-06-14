@@ -6,11 +6,13 @@ import { BrowserRouter} from 'react-router'
 
 import AppRoutes from './routes/Routes.tsx'
 import { UserProvider } from './context/UserProvider.tsx'
+import { Toaster } from 'react-hot-toast'
 
 createRoot(document.getElementById('root')!).render(
   <UserProvider>
     <BrowserRouter>
       <AppRoutes />
+      <Toaster position="bottom-right" />
     </BrowserRouter>
   </UserProvider>
 )
