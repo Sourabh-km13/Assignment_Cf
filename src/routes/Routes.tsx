@@ -4,7 +4,8 @@ import Users from "../pages/Users";
 // import Forms from "../pages/Forms";
 import App from "../App";
 import Layout from "../Layout/Layout";
-import UserDetailPage from "../pages/UserDetailPage";
+import UserDetails from "../pages/UserDetailPage";
+
 
 export default function AppRoutes() {
   return (
@@ -14,7 +15,7 @@ export default function AppRoutes() {
         <Route path="/users" element={<Users />} />
         <Route
         path="/users/:id"
-        element={<UserDetailPage />}
+        element={<UserDetails/>}
       />
         {/* <Route path="/forms" element={<Forms />} /> */}
       </Route>
