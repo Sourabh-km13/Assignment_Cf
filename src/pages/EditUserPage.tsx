@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useNavigate, useParams } from "react-router";
 import toast from "react-hot-toast";
 import { useUsers } from "../hooks/useUsers";
-import UserForm from "../components/UserForm";
+import UserForm from "../components/Forms/UserForm";
 import type { UserFormValues } from "../types/userType";
 import Loading from "../components/ui/Loading";
 import ErrorView from "../components/ui/ErrorView";
@@ -11,15 +11,6 @@ export default function EditUserPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { users, updateUser, isLoading, loadingError, retryLoadUsers } = useUsers();
-
-  if (isLoading) {
-    return <Loading message="Loading user data..." />;
-  }
-
-  if (loadingError) {
-    return <ErrorView message={loadingError} onRetry={retryLoadUsers} />;
-  }
-
   const userId = Number(id);
   const user = users.find((item) => item.id === userId);
 
@@ -41,6 +32,14 @@ export default function EditUserPage() {
       lng: user.address.geo.lng,
     };
   }, [user]);
+
+  if (isLoading) {
+    return <Loading message="Loading user data..." />;
+  }
+
+  if (loadingError) {
+    return <ErrorView message={loadingError} onRetry={retryLoadUsers} />;
+  }
 
   if (!user) {
     return (

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useUsers } from "../hooks/useUsers";
 import toast from "react-hot-toast";
-import UserForm from "../components/UserForm";
+import UserForm from "../components/Forms/UserForm";
 import type { UserFormValues } from "../types/userType";
 
 export default function NewUserPage() {
