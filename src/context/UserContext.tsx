@@ -10,6 +10,9 @@ interface UserContextType {
   createUser: (values: UserFormValues) => void;
   updateUser: (id: number, values: UserFormValues) => void;
   deleteUser: (id: number) => void;
+  isLoading: boolean;
+  loadingError: string | null;
+  retryLoadUsers: () => void;
 }
 
 const UserContext =

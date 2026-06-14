@@ -4,11 +4,21 @@ import toast from "react-hot-toast";
 import { useUsers } from "../hooks/useUsers";
 import UserForm from "../components/UserForm";
 import type { UserFormValues } from "../types/userType";
+import Loading from "../components/ui/Loading";
+import ErrorView from "../components/ui/ErrorView";
 
 export default function EditUserPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { users, updateUser } = useUsers();
+  const { users, updateUser, isLoading, loadingError, retryLoadUsers } = useUsers();
+
+  if (isLoading) {
+    return <Loading message="Loading user data..." />;
+  }
+
+  if (loadingError) {
+    return <ErrorView message={loadingError} onRetry={retryLoadUsers} />;
+  }
 
   const userId = Number(id);
   const user = users.find((item) => item.id === userId);

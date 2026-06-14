@@ -1,25 +1,33 @@
-import { useContext } from "react";
 import { useNavigate, useParams } from "react-router";
-import {  Mail, Phone, Building2, MapPin, Globe } from "lucide-react";
+import { Mail, Phone, Building2, MapPin, Globe } from "lucide-react";
 import toast from "react-hot-toast";
-import UserContext from "../context/UserContext";
+import { useUsers } from "../hooks/useUsers";
 import { InfoCard } from "../components/InfoCard";
 import UserSubmittedForms from "../components/UserSubmittedForms";
 import Button from './../components/Button';
+import Loading from "../components/ui/Loading";
+import ErrorView from "../components/ui/ErrorView";
 
 export default function UserDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { users, formSubmission, isLoading, loadingError, retryLoadUsers, deleteUser } = useUsers();
 
-    const data = useContext(UserContext);
+    if (isLoading) {
+        return <Loading message="Loading user details..." />;
+    }
 
-    const user = data?.users.find(
+    if (loadingError) {
+        return <ErrorView message={loadingError} onRetry={retryLoadUsers} />;
+    }
+
+    const user = users.find(
         (user) => user.id === Number(id)
     );
 
-    const submittedForms = data?.formSubmission.filter(
+    const submittedForms = formSubmission.filter(
         (submission) => submission.userId === Number(id)
-    ) ?? [];
+    );
 
     if (!user) {
         return (
@@ -80,7 +88,7 @@ export default function UserDetails() {
                             <Button     
                                 onClick={() => {
                                     if (window.confirm("Delete this user?")) {
-                                        data?.deleteUser(user.id);
+                                        deleteUser(user.id);
                                         toast.success("User deleted successfully.");
                                         navigate("/users");
                                     }

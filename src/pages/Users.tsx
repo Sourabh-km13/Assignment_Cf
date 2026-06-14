@@ -1,19 +1,27 @@
-import { useContext, useState } from "react"
-import UserContext from "../context/UserContext"
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { useDebounce } from "../hooks/useDebounce";
+import { useUsers } from "../hooks/useUsers";
 import { UserCard } from "../components/UserCard";
 import SearchBar from "../components/SearchBar";
-import { useDebounce } from "../hooks/useDebounce";
-import { useNavigate } from "react-router";
-
-
-
+import Loading from "../components/ui/Loading";
+import ErrorView from "../components/ui/ErrorView";
 
 function Users() {
-    const data = useContext(UserContext);
+    const { users, isLoading, loadingError, retryLoadUsers } = useUsers();
     const navigate = useNavigate();
     const [search, setSearch] = useState("");
-    const debouncedSearch =useDebounce(search, 400);
-    const filteredUsers = data?.users.filter(
+    const debouncedSearch = useDebounce(search, 400);
+
+    if (isLoading) {
+        return <Loading message="Loading users..." />;
+    }
+
+    if (loadingError) {
+        return <ErrorView message={loadingError} onRetry={retryLoadUsers} />;
+    }
+
+    const filteredUsers = users.filter(
         (user) =>
             user.name
                 .toLowerCase()

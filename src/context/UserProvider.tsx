@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { User, UserFormValues } from "../types/userType";
 import type { FormSubmission } from "../types/formType";
 import UserContext from "./UserContext";
@@ -8,20 +8,33 @@ import { createUser, updateUser, deleteUser as removeUser } from "../services/us
 export function UserProvider({ children }: { children: React.ReactNode }) {
   const [users, setUsers] = useState<User[]>([]);
   const [formSubmission, setFormSubmission] = useState<FormSubmission[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingError, setLoadingError] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function loadUsers() {
-      try {
-        const fetchedUsers = await getAllUsers();
-        setUsers(fetchedUsers);
-      } catch (error) {
-        console.error("Unable to load users:", error);
-      }
+  const loadUsers = useCallback(async (showLoading = true) => {
+    if (showLoading) {
+      setIsLoading(true);
+      setLoadingError(null);
     }
 
-    loadUsers();
+    try {
+      const fetchedUsers = await getAllUsers();
+      setUsers(fetchedUsers);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unable to load users.";
+      setLoadingError(message);
+      console.error("Unable to load users:", error);
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
+  useEffect(() => {
+    const fetchUsers = async () => {
+      await loadUsers();
+    };
 
+    void fetchUsers();
+  }, [loadUsers]);
   const addSubmission = (submission: FormSubmission) => {
     setFormSubmission((current) => [...current, submission]);
   };
@@ -48,6 +61,9 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         createUser: createUserHandler,
         updateUser: updateUserHandler,
         deleteUser: deleteUserHandler,
+        isLoading,
+        loadingError,
+        retryLoadUsers: loadUsers,
       }}
     >
       {children}
