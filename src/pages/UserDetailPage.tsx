@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import { ArrowLeft, Mail, Phone, Building2, MapPin, Globe } from "lucide-react";
 import UserContext from "../context/UserContext";
 import { InfoCard } from "../components/InfoCard";
+import UserSubmittedForms from "../components/UserSubmittedForms";
 
 export default function UserDetails() {
     const { id } = useParams();
@@ -13,6 +14,10 @@ export default function UserDetails() {
     const user = data?.users.find(
         (user) => user.id === Number(id)
     );
+
+    const submittedForms = data?.formSubmission.filter(
+        (submission) => submission.userId === Number(id)
+    ) ?? [];
 
     if (!user) {
         return (
@@ -49,8 +54,6 @@ export default function UserDetails() {
                             <p className="mt-1 text-slate-200">
                                 @{user.username}
                             </p>
-
-                            
                         </div>
                     </div>
                 </section>
@@ -95,6 +98,7 @@ export default function UserDetails() {
                     </div>
                 </section>
 
+                <UserSubmittedForms submissions={submittedForms} />
             </div>
         </main>
     );

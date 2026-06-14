@@ -1,15 +1,17 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useUsers } from "../../hooks/useUsers";
 import type { HealthAssessmentFormData } from "../../types/formType";
 import { UserSelect } from "../SelectUserForm";
 
 export const HealthAssessmentForm = () => {
-    const { addSubmission } =
-        useUsers();
+    const { addSubmission } = useUsers();
+    const [submitted, setSubmitted] = useState(false);
 
     const {
         register,
         handleSubmit,
+        reset,
     } = useForm<HealthAssessmentFormData>();
 
     const onSubmit = (
@@ -22,6 +24,8 @@ export const HealthAssessmentForm = () => {
             submittedAt: new Date().toISOString(),
             data,
         });
+        reset();
+        setSubmitted(true);
     };
 
     return (
@@ -29,6 +33,11 @@ export const HealthAssessmentForm = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-6"
         >
+            {submitted && (
+                <div className="rounded-2xl border border-emerald-500/40 bg-emerald-500/10 p-4 text-emerald-200">
+                    Health assessment submitted successfully.
+                </div>
+            )}
             <UserSelect register={register} />
 
             <div className="grid md:grid-cols-2 gap-4">

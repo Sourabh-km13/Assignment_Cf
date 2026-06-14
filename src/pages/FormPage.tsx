@@ -5,8 +5,8 @@ export default function FormPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="text-white px-6 py-10">
-      <div className="max-w-4xl mx-auto space-y-8">
+    <div className="min-h-screen bg-slate-950 px-6 py-10 text-white">
+      <div className="mx-auto max-w-4xl space-y-8 rounded-3xl bg-slate-900/90 border border-slate-800 p-8 shadow-2xl">
         <div>
           <h1 className="text-4xl font-bold mb-3">Forms</h1>
           <p className="text-slate-400">Choose a form to complete for a resident.</p>
