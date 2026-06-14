@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useUsers } from "../../hooks/useUsers";
@@ -7,7 +7,6 @@ import { UserSelect } from "../SelectUserForm";
 
 export const IncidentReportForm = () => {
   const { addSubmission } = useUsers();
-  const [submitted, setSubmitted] = useState(false);
 
   const {
     register,
@@ -27,7 +26,6 @@ export const IncidentReportForm = () => {
       data,
     });
     reset();
-    setSubmitted(true);
     toast.success("Incident report submitted successfully.");
   };
 
@@ -38,13 +36,8 @@ export const IncidentReportForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="space-y-6"
+      className="space-y-6 bg-transparent"
     >
-      {submitted && (
-        <div className="rounded-2xl border border-emerald-500/40 bg-emerald-500/10 p-4 text-emerald-200">
-          Incident report submitted successfully.
-        </div>
-      )}
       <UserSelect register={register} />
       {errors.userId && (
         <p className="text-sm text-rose-400">Please select a user.</p>
@@ -54,7 +47,7 @@ export const IncidentReportForm = () => {
         <input
           {...register("residentName", { required: "Resident name is required." })}
           placeholder="Resident Name"
-          className="input"
+          className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
         />
         {errors.residentName && (
           <p className="text-sm text-rose-400">{errors.residentName.message}</p>
@@ -63,7 +56,7 @@ export const IncidentReportForm = () => {
         <input
           {...register("caregiverName", { required: "Caregiver name is required." })}
           placeholder="Caregiver Name"
-          className="input"
+          className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
         />
         {errors.caregiverName && (
           <p className="text-sm text-rose-400">{errors.caregiverName.message}</p>
@@ -72,7 +65,7 @@ export const IncidentReportForm = () => {
         <input
           type="date"
           {...register("date", { required: "Date is required." })}
-          className="input"
+          className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
         />
         {errors.date && (
           <p className="text-sm text-rose-400">{errors.date.message}</p>
@@ -81,7 +74,7 @@ export const IncidentReportForm = () => {
         <input
           type="time"
           {...register("time", { required: "Time is required." })}
-          className="input"
+          className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
         />
         {errors.time && (
           <p className="text-sm text-rose-400">{errors.time.message}</p>
@@ -90,7 +83,7 @@ export const IncidentReportForm = () => {
         <input
           {...register("location", { required: "Location is required." })}
           placeholder="Location"
-          className="input"
+          className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
         />
         {errors.location && (
           <p className="text-sm text-rose-400">{errors.location.message}</p>
@@ -99,7 +92,7 @@ export const IncidentReportForm = () => {
         <input
           {...register("roomNo", { required: "Room number is required." })}
           placeholder="Room Number"
-          className="input"
+          className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
         />
         {errors.roomNo && (
           <p className="text-sm text-rose-400">{errors.roomNo.message}</p>
@@ -140,7 +133,7 @@ export const IncidentReportForm = () => {
         {...register("description", { required: "Description is required." })}
         placeholder="Incident Description"
         rows={5}
-        className="input"
+        className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
       />
       {errors.description && (
         <p className="text-sm text-rose-400">{errors.description.message}</p>
@@ -179,7 +172,7 @@ export const IncidentReportForm = () => {
         {...register("followUpNotes", { required: "Follow-up notes are required." })}
         placeholder="Additional Follow-up Notes"
         rows={5}
-        className="input"
+        className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
       />
       {errors.followUpNotes && (
         <p className="text-sm text-rose-400">{errors.followUpNotes.message}</p>

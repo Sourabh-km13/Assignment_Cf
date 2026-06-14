@@ -23,14 +23,14 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
   );
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-transparent">
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <label className="block text-sm font-medium text-slate-200 mb-2">Name</label>
           <input
             {...register("name", { required: "Name is required." })}
             placeholder="Full Name"
-            className="input"
+            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
           />
           {errors.name && <p className="text-sm text-rose-400">{errors.name.message}</p>}
         </div>
@@ -40,7 +40,7 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
           <input
             {...register("username", { required: "Username is required." })}
             placeholder="Username"
-            className="input"
+            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
           />
           {errors.username && <p className="text-sm text-rose-400">{errors.username.message}</p>}
         </div>
@@ -58,7 +58,7 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
               },
             })}
             placeholder="Email"
-            className="input"
+            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
           />
           {errors.email && <p className="text-sm text-rose-400">{errors.email.message}</p>}
         </div>
@@ -68,7 +68,7 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
           <input
             {...register("phone", { required: "Phone is required." })}
             placeholder="Phone"
-            className="input"
+            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
           />
           {errors.phone && <p className="text-sm text-rose-400">{errors.phone.message}</p>}
         </div>
@@ -80,7 +80,7 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
           <input
             {...register("website", { required: "Website is required." })}
             placeholder="Website"
-            className="input"
+            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
           />
           {errors.website && <p className="text-sm text-rose-400">{errors.website.message}</p>}
         </div>
@@ -90,7 +90,7 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
           <input
             {...register("companyName", { required: "Company name is required." })}
             placeholder="Company Name"
-            className="input"
+            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
           />
           {errors.companyName && <p className="text-sm text-rose-400">{errors.companyName.message}</p>}
         </div>
@@ -102,7 +102,7 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
           <input
             {...register("street", { required: "Street is required." })}
             placeholder="Street"
-            className="input"
+            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
           />
           {errors.street && <p className="text-sm text-rose-400">{errors.street.message}</p>}
         </div>
@@ -112,7 +112,7 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
           <input
             {...register("suite")}
             placeholder="Suite"
-            className="input"
+            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
           />
         </div>
       </div>
@@ -123,7 +123,7 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
           <input
             {...register("city", { required: "City is required." })}
             placeholder="City"
-            className="input"
+            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
           />
           {errors.city && <p className="text-sm text-rose-400">{errors.city.message}</p>}
         </div>
@@ -133,7 +133,7 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
           <input
             {...register("zipcode", { required: "Zipcode is required." })}
             placeholder="Zipcode"
-            className="input"
+            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
           />
           {errors.zipcode && <p className="text-sm text-rose-400">{errors.zipcode.message}</p>}
         </div>
@@ -143,7 +143,7 @@ export default function UserForm({ defaultValues, onSubmit, submitLabel }: UserF
           <input
             {...register("lat")}
             placeholder="Lat"
-            className="input"
+            className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
           />
         </div>
       </div>

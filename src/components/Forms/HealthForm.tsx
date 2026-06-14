@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useUsers } from "../../hooks/useUsers";
@@ -7,7 +7,6 @@ import { UserSelect } from "../SelectUserForm";
 
 export const HealthAssessmentForm = () => {
     const { addSubmission } = useUsers();
-    const [submitted, setSubmitted] = useState(false);
 
     const {
         register,
@@ -42,7 +41,6 @@ export const HealthAssessmentForm = () => {
             data,
         });
         reset();
-        setSubmitted(true);
         toast.success("Health assessment submitted successfully.");
     };
 
@@ -53,13 +51,8 @@ export const HealthAssessmentForm = () => {
     return (
         <form
             onSubmit={handleSubmit(onSubmit, onError)}
-            className="space-y-6"
+            className="space-y-6 bg-transparent"
         >
-            {submitted && (
-                <div className="rounded-2xl border border-emerald-500/40 bg-emerald-500/10 p-4 text-emerald-200">
-                    Health assessment submitted successfully.
-                </div>
-            )}
             <UserSelect register={register} />
             {errors.userId && (
                 <p className="text-sm text-rose-400">Please select a user.</p>
@@ -69,7 +62,7 @@ export const HealthAssessmentForm = () => {
                 <input
                     {...register("residentName", { required: "Resident name is required." })}
                     placeholder="Resident Name"
-                    className="input"
+                    className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
                 />
                 {errors.residentName && (
                     <p className="text-sm text-rose-400">{errors.residentName.message}</p>
@@ -78,7 +71,7 @@ export const HealthAssessmentForm = () => {
                 <input
                     {...register("caregiverName", { required: "Caregiver name is required." })}
                     placeholder="Caregiver Name"
-                    className="input"
+                    className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
                 />
                 {errors.caregiverName && (
                     <p className="text-sm text-rose-400">{errors.caregiverName.message}</p>
@@ -91,7 +84,7 @@ export const HealthAssessmentForm = () => {
                         valueAsNumber: true,
                     })}
                     placeholder="Age"
-                    className="input"
+                    className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
                 />
                 {errors.age && (
                     <p className="text-sm text-rose-400">{errors.age.message}</p>
@@ -100,7 +93,7 @@ export const HealthAssessmentForm = () => {
                 <input
                     {...register("gender", { required: "Gender is required." })}
                     placeholder="Gender"
-                    className="input"
+                    className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
                 />
                 {errors.gender && (
                     <p className="text-sm text-rose-400">{errors.gender.message}</p>
@@ -109,7 +102,7 @@ export const HealthAssessmentForm = () => {
                 <input
                     {...register("roomNo", { required: "Room number is required." })}
                     placeholder="Room Number"
-                    className="input"
+                    className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
                 />
                 {errors.roomNo && (
                     <p className="text-sm text-rose-400">{errors.roomNo.message}</p>
@@ -118,7 +111,7 @@ export const HealthAssessmentForm = () => {
                 <input
                     type="date"
                     {...register("date", { required: "Date is required." })}
-                    className="input"
+                    className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
                 />
                 {errors.date && (
                     <p className="text-sm text-rose-400">{errors.date.message}</p>
@@ -134,7 +127,7 @@ export const HealthAssessmentForm = () => {
                     <input
                         {...register("temperature", { required: "Temperature is required." })}
                         placeholder="Temperature"
-                        className="input"
+                        className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
                     />
                     {errors.temperature && (
                         <p className="text-sm text-rose-400">{errors.temperature.message}</p>
@@ -143,7 +136,7 @@ export const HealthAssessmentForm = () => {
                     <input
                         {...register("bloodPressure", { required: "Blood pressure is required." })}
                         placeholder="Blood Pressure"
-                        className="input"
+                        className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
                     />
                     {errors.bloodPressure && (
                         <p className="text-sm text-rose-400">{errors.bloodPressure.message}</p>
@@ -152,7 +145,7 @@ export const HealthAssessmentForm = () => {
                     <input
                         {...register("heartRate", { required: "Heart rate is required." })}
                         placeholder="Heart Rate"
-                        className="input"
+                        className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
                     />
                     {errors.heartRate && (
                         <p className="text-sm text-rose-400">{errors.heartRate.message}</p>
@@ -161,7 +154,7 @@ export const HealthAssessmentForm = () => {
                     <input
                         {...register("oxygenLevel", { required: "Oxygen level is required." })}
                         placeholder="Oxygen Level"
-                        className="input"
+                        className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
                     />
                     {errors.oxygenLevel && (
                         <p className="text-sm text-rose-400">{errors.oxygenLevel.message}</p>
@@ -170,7 +163,7 @@ export const HealthAssessmentForm = () => {
                     <input
                         {...register("respiratoryRate", { required: "Respiratory rate is required." })}
                         placeholder="Respiratory Rate"
-                        className="input"
+                        className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
                     />
                     {errors.respiratoryRate && (
                         <p className="text-sm text-rose-400">{errors.respiratoryRate.message}</p>
@@ -212,7 +205,7 @@ export const HealthAssessmentForm = () => {
                 {...register("caregiverNotes", { required: "Caregiver notes are required." })}
                 placeholder="Caregiver Notes"
                 rows={5}
-                className="input"
+                className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
             />
             {errors.caregiverNotes && (
                 <p className="text-sm text-rose-400">{errors.caregiverNotes.message}</p>
@@ -221,7 +214,7 @@ export const HealthAssessmentForm = () => {
             <input
                 {...register("signature", { required: "Caregiver signature is required." })}
                 placeholder="Caregiver Signature"
-                className="input"
+                className="w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition"
             />
             {errors.signature && (
                 <p className="text-sm text-rose-400">{errors.signature.message}</p>
