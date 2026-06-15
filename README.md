@@ -55,5 +55,5 @@
 - Form submissions are stored in app state and linked to users.
 
 ## Submission
-- GitHub repo: [add link]
-- Live demo: [add link]
+- GitHub repo: https://github.com/Sourabh-km13/Assignment_Cf
+- Live demo: https://stellar-choux-522f6a.netlify.app/
