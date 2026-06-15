@@ -73,7 +73,7 @@ export default function UserDetails() {
                 <section className="mt-6 rounded-3xl bg-slate-800/40 p-8 shadow-sm ">
                     <div className="flex flex-wrap items-center justify-between gap-4">
                         <div>
-                            <h2 className="mb-6 text-xl font-semibold">
+                            <h2 className="mb-6 text-xl font-semibold text-gray-200">
                                 User Information
                             </h2>
                         </div>

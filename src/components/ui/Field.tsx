@@ -22,7 +22,7 @@ type FieldProps = InputFieldProps | TextareaFieldProps;
 
 export default function Field({ label, error, as = "input", className = "", noBase = false, ...rest }: FieldProps) {
   const base =
-    "w-full rounded-md bg-slate-900/60 border-2 border-amber-400/80 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition";
+    "w-full rounded-md bg-slate-900/60 border-2 border-blue-800/40 focus:border-amber-300 focus:ring-2 focus:ring-amber-300 px-3 py-2 text-white placeholder-slate-400 transition";
 
   const classes = noBase ? className : `${base} ${className}`;
 

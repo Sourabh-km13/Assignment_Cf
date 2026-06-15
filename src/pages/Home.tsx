@@ -17,12 +17,12 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 {/* Users Button */}
                 <Button onClick={() => navigate("/users")}>
-                    User
+                   See User
                 </Button>
 
                 {/* Forms Button */}
                 <Button gradient="bg-gradient-to-r from-violet-500 to-indigo-500" onClick={() => navigate("/forms") }>
-                    Forms
+                    See Forms
                 </Button>
             </div>
         </div>
