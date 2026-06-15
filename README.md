@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+﻿# Care Management Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+- Fetch users from JSONPlaceholder API
+- Search users by name and email
+- Add, edit, and delete users locally
+- View user details with address, company, and submitted forms
+- Submit Health Assessment and Incident Report forms
+- Associate submitted forms with selected users
+- Pagination for users (6 cards per page)
+- Loading and error handling for API requests
 
-Currently, two official plugins are available:
+## Bonus Features
+- Debounced search
+- Custom `useUsers()` hook
+- Toast notifications for feedback
+- Responsive mobile and desktop UI
+- Reusable pagination component
+- Error handling 
+## Project Structure
+- `src/pages/Users.tsx` — user list, search, pagination
+- `src/pages/UserDetailPage.tsx` — details and submitted forms
+- `src/pages/NewUserPage.tsx` — add user form
+- `src/pages/EditUserPage.tsx` — edit user form
+- `src/pages/FormPage.tsx` — form selection page
+- `src/pages/HealthFormPage.tsx` — health assessment form
+- `src/pages/IncidentReportPage.tsx` — incident report form
+- `src/components/Forms/HealthForm.tsx` — health form implementation
+- `src/components/Forms/IncidentReportForm.tsx` — incident report implementation
+- `src/components/PaginationControls.tsx` — pagination buttons
+- `src/components/UserSubmittedForms.tsx` — submitted forms list
+- `src/hooks/useUsers.tsx` — shared user and submission state
+- `src/components/Button.tsx` — reusable button component
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Setup
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Change directory into the project:
+   ```bash
+   cd Assgn_Careflick
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Run the app:
+   ```bash
+   npm run dev
+   ```
 
-## React Compiler
+## Notes
+- User CRUD is simulated locally because the API is read-only.
+- Form submissions are stored in app state and linked to users.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Submission
+- GitHub repo: [add link]
+- Live demo: [add link]
